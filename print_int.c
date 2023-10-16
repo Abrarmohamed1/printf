@@ -1,13 +1,12 @@
 
 #include <stdarg.h>
 #include <string.h>
-
-int print(const char *format, ...);
-
-int main() {
-    print("%d %i", 4, 6);
-    return 0;
-}
+#include<main.h>
+/**
+ * print - function thats prints integrs
+ * @format : an array of charchter
+ * return : success '0' ;
+ */
 
 int print(const char *format, ...) {
     int format_length = strlen(format);
