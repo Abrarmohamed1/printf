@@ -1,6 +1,12 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-int _printf(const char *format, ...);
 
+#include<stdio.h>
+#include <stdarg.h>
+#include<unistd.h>
+#include<stdlib.h>
+int _printf(const char *format, ...);
+int printchar(va_list arg);
+int print_porcentage(void);
 #endif
