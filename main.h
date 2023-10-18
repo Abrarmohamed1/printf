@@ -1,19 +1,20 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef HOLBERTONH
+#define HOLBERTONH
 
-<<<<<<< HEAD
-#include <stdio.h>
 #include <stdarg.h>
-#include <string.h>
-#include <unistd.h>
-
-=======
->>>>>>> df5d5b9ea915d9e4a81c928f6621af5b525f52aa
+int _putchar(char c);
 int _printf(const char *format, ...);
-int printchar(va_list arg);
-int print_porcentage(void);
-
-
+int print_char(va_list c);
+int print_string(va_list s);
+int print_int(va_list i);
+int print_dec(va_list d);
+int print_rev(va_list r);
+int print_bin(va_list b);
+int print_unsig(va_list u);
+int print_octal(va_list o);
+int print_x(va_list x);
+int print_X(va_list X);
+int print_rot13(va_list R);
 /**
   * struct code_format - Struct format
   *
@@ -26,4 +27,4 @@ typedef struct code_format
 	int (*f)(va_list);
 } code_f;
 
-#endif
+#endif /* HOLBERTONH */
