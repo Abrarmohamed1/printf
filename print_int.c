@@ -1,45 +1,39 @@
 #include"main.h"
-
 /**
- * print_int - prints intiger number
- * @args: number arguements
- * @printed: the printed characters
- * Return: printed charcaters
- */
-
-int print_int(va_list args, int printed)
+ * print_integer - print intgers to the stander output.
+ * @args: the pritend number.
+ * return : 0 alaways success.
+*/
+void print_integer(va_list args)
 {
 	int num = va_arg(args, int);
-	int digits = 0;
-	int temp = num;
-	int digit;
+	int len = 0;
 
 	if (num < 0)
 	{
-		printed += _putchar('-');
+		len += _putchar('-');
 		num = -num;
-
-		temp = num;
 	}
 
-	do {
-		digits++;
-		temp /= 10;
-	} while (temp != 0);
-
-	while (digits > 0)
+	if (num == 0)
 	{
-		int pow10 = 1;
-		int i;
-
-		for (i = 1; i < digits; i++)
-		{
-			pow10 *= 10;
-		}
-		digit = num / pow10;
-		printed += _putchar(digit + '0');
-		num -= digit * pow10;
-		digits--;
+		len += _putchar('0');
+		return (len);
 	}
-	return (printed);
+
+	int power = 1;
+
+	while (num / power >= 10)
+	{
+		power *= 10;
+	}
+	while (power > 0)
+	{
+		int digit = num / power;
+
+		len += _putchar('0' + digit);
+		num %= power;
+		power /= 10;
+	}
+	return (len);
 }

@@ -1,14 +1,16 @@
 #include"main.h"
 /**
- * print_c - print char  .
- * @arg : the char to be printed .
- * return : success 1 .
+ * print_char - Print a character to the standard output.
+ *
+ * @args: A va_list containing the character to be printed.
+ *
+ * @return: Returns the number of characters printed (1 in this case).
  */
-int print_c(va_list arg)
+int print_char(va_list args)
 {
-	char str;
+	char c = va_arg(args, int);
 
-	str = va_arg(arg, int);
-	_putchar(str);
-	return (1);
+	_putchar(c);
+	return (0);
 }
+

@@ -1,11 +1,11 @@
 #include"main.h"
-
 /**
- * print_per - print % signe
- * return: intger
+ * print_percent - print percrnt to the stander output.
+ * @args: argument.
+ * return :0 always success
+ * return the percent sign.
  */
-int print_per(void)
+void print_percent(va_list args)
 {
-	_putchar(37);
-	return (1);
+	return (_putchar ('%'));
 }
