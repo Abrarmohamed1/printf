@@ -17,7 +17,7 @@ int _strlen(char *str);
 int _strlenc(const char *str);
 int print_per(void);
 int print_int(va_list args, int printed);
-int _printf(const char *format, ...);
+
 
 
 #endif
