@@ -12,8 +12,8 @@ int _printf(const char *format, ...)
 
 	va_list args;
 	int i = 0, len = 0, j;
-	va_start(arg, format);
-	if (format = NULL || (format[0] == "%" && format == '\0'))
+	va_start(args, format);
+	if (format = NULL || (format[0] == "%" && format[1] == '\0'))
 		return (-1);
 
 Here:
