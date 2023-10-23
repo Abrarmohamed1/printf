@@ -1,109 +1,69 @@
 #include "main.h"
-
 /**
- * converter_x - converts a unsigned int number
- * into hexadecimal (lowercase) notation.
- * @i: number to convert.
- */
-void converter_x(int i)
+* print_hex - function that prints an unsigned int in hexadecimal
+* @n: unsigned to be printed
+* @c: case of printing (0 = lower, 1 = upper)
+* Descriptions: prints unsigned in hexadecimal with _putchar
+* Return: size the output
+*/
+int print_hex(unsigned int n, unsigned int c)
 {
-	if (i < 10)
-		_putchar(i + '0');
-	if (i == 10)
-		_putchar('a');
-	if (i == 11)
-		_putchar('b');
-	if (i == 12)
-		_putchar('c');
-	if (i == 13)
-		_putchar('d');
-	if (i == 14)
-		_putchar('e');
-	if (i == 15)
-		_putchar('f');
-}
+	unsigned int len, powten, j, digit, num;
+	int count = 0;
+	char diff;
 
-/**
- * print_x - prints a unsigned int number in hexadecimal (lowercase) notation.
- * @arg: number to print.
- * Return: number of digits printed.
- */
-int print_x(va_list arg)
-{
-	int cont = 1, i = 0, tab[8];
-	unsigned int num = va_arg(arg, unsigned int);
-
-	if (num == 0)
+	if (n != 0)
+	{
+		num = n;
+		len = 0;
+		if (c)
+			diff = 'A' - ':';
+		else
+			diff = 'a' - ':';
+		while (num != 0)
+		{
+			num /= 16;
+			len++;
+		}
+		powten = 1;
+		for (j = 1; j <= len - 1; j++)
+			powten *= 16;
+		for (j = 1; j <= len; j++)
+		{
+			digit = n / powten;
+			if (digit < 10)
+				_putchar(digit + '0');
+			else
+				_putchar(digit + '0' + diff);
+			count++;
+			n -= digit * powten;
+			powten /= 16;
+		}
+	}
+	else
 	{
 		_putchar('0');
-		return (cont);
+		return (1);
 	}
-
-	while (num != 0)
-	{
-		tab[i] = (num % 16);
-		num = num / 16;
-		i++;
-	}
-	cont = i;
-	i--;
-
-	for (; i >= 0; i--)
-		converter_x(tab[i]);
-
-	return (cont);
+	return (count);
 }
-
 /**
- * converter_X - converts a unsigned int number
- * into hexadecimal (uppercase) notation.
- * @i: number to convert.
- */
-void converter_X(int i)
+* print_x - takes an unsigned int an prints it in lowercase hex
+* @x: unsigned int to print
+* Descriptions: prints in lowercase hex with _putchar
+* Return: size of the output
+*/
+int print_x(va_list x)
 {
-	if (i < 10)
-		_putchar(i + '0');
-	if (i == 10)
-		_putchar('A');
-	if (i == 11)
-		_putchar('B');
-	if (i == 12)
-		_putchar('C');
-	if (i == 13)
-		_putchar('D');
-	if (i == 14)
-		_putchar('E');
-	if (i == 15)
-		_putchar('F');
+	return (print_hex(va_arg(x, unsigned int), 0));
 }
-
 /**
- * print_X - prints a unsigned int number in hexadecimal (uppercase) notation.
- * @arg: number to print.
- * Return: number of digits printed.
- */
-int print_X(va_list arg)
+* print_X - takes an unsigned int an prints it in uppercase hex
+* @X: unsigned int to print
+* Descriptions: prints in uppercase hex with _putchar
+* Return: size of the output
+*/
+int print_X(va_list X)
 {
-	int cont = 1, i = 0, tab[8];
-	unsigned int num = va_arg(arg, unsigned int);
-
-	if (num == 0)
-	{
-		_putchar('0');
-		return (cont);
-	}
-
-	while (num != 0)
-	{
-		tab[i] = (num % 16);
-		num = num / 16;
-		i++;
-	}
-	cont = i;
-	i--;
-
-	for (; i >= 0; i--)
-		converter_X(tab[i]);
-
-	return (cont);
+	return (print_hex(va_arg(X, unsigned int), 1));
 }

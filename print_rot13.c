@@ -1,35 +1,31 @@
-#include "holberton.h"
-
+#include "main.h"
+#include <stdio.h>
 /**
- * print_R - prints a string with rot13 encryption.
- * @arg: string to print.
- * Return: number of chars printed.
- */
-int print_R(va_list arg)
+  * print_rot13 - encodes a string into rot13.
+  * @R: string to convert
+  * Return: size the output text
+  */
+int print_rot13(va_list R)
 {
-	int i, j, cont = 0;
-	char *str = va_arg(arg, char *);
-	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	int j, i, count = 0;
+	char *r;
+	char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz";
+	char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLM nopqrstuvwxyzabcdefghijklm";
 
-	for (i = 0; str[i]; i++)
+	r = va_arg(R, char *);
+	if (r == NULL)
+		r = "(null)";
+	for (j = 0; r[j] != '\0'; j++)
 	{
-		for (j = 0; j < 52; j++)
+		for (i = 0; input[i] != '\0'; i++)
 		{
-			if (str[i] == alpha[j])
-			break;
-		}
-		if (str[i] == alpha[j])
-		{
-			_putchar(rot13[j]);
-			cont++;
-		}
-		else
-		{
-			_putchar(str[i]);
-			cont++;
+			if (r[j] == input[i])
+			{
+				_putchar(output[i]);
+				count++;
+				break;
+			}
 		}
 	}
-
-	return (cont);
+	return (count);
 }
